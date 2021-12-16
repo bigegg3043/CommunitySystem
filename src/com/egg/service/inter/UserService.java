@@ -1,4 +1,7 @@
 package com.egg.service.inter;
 
-public class UserService {
+import com.egg.dao.pojo.User;
+
+public interface UserService {
+    User isUsing(String username);
 }
