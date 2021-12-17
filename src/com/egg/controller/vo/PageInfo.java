@@ -1,6 +1,5 @@
 package com.egg.controller.vo;
 
-import com.butegg.service.impl.AllServiceImpl;
 import lombok.Data;
 
 @Data
@@ -15,7 +14,7 @@ public class PageInfo {
     public PageInfo(int size,int page) {
         this.size = size;
         this.page = page;
-        this.allEmp = new AllServiceImpl().sellectAllEmp().size();
+//        this.allEmp = new AllServiceImpl().sellectAllEmp().size();
         this.start = size*(page-1);
         this.end = (size*page)-1;
         if(allEmp%size==0){

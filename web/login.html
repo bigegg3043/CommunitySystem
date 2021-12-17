@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Loding font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,700" rel="stylesheet">
+	<!-- Custom Styles -->
+	<link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <title>高新设计城-管理系统-LOGIN</title>
+	<script src="js/jquery-3.6.0.js"></script>
+</head>
+<body>
+	<div id="login-bg" class="container-fluid">
+	  <div class="bg-img"></div>
+	  <div class="bg-color"></div>
+	</div>
+	
+	<div class="container" id="login">
+	  <div class="row justify-content-center">
+	    <div class="col-lg-8">
+	      <div class="login">
+	
+	        <h1>登录</h1>
+	
+	        <!-- Loging form -->
+	        <form id="f1" action="/login" method="post">
+	          <div class="form-group">
+	            <input type="text" class="form-control" id="exampleInputText1" aria-describedby="emailHelp" name="username" placeholder="请输入用户名">
+				<span id="usernameSpan">
+					
+				</span>
+	          </div>
+	          <div class="form-group">
+	           <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="请输入密码">
+			   <span id="passwordSpan">
+			   	
+			   </span>
+	          </div>
+	
+	          <div class="form-check">
+	            <label class="forgot-password"><a href="reg.jsp">没有账号?立即注册！</a></label>
+	          </div>
+	
+	          <br>
+	          <button id="sub" type="button" class="btn btn-lg btn-block btn-success">立即登录</button>
+	        </form>
+	        <!-- End Loging form -->
+	      </div>
+	    </div>
+	  </div>
+	<script>
+		var u_z = /^[A-z,0-9,_]{6,12}$/;
+		var p_z = /^[A-z,0-9,_]{8,18}$/;
+		$(function(){
+			$("#exampleInputText1").blur(function(){
+				uf();
+			});
+			$("#exampleInputPassword1").blur(function(){
+				pf();
+			});
+			$("#sub").click(function(){
+				if(uf() && pf()){
+					$("#f1").submit();
+				}
+			});
+			function uf(){
+				if(u_z.test($("#exampleInputText1").val()) || $("#exampleInputText1").val()=="admin"){
+					$("#usernameSpan").css("color","green");
+					$("#usernameSpan").text("用户名格式正确!");
+					return true;
+				}else{
+				    $("#usernameSpan").css("color","red");
+				    $("#usernameSpan").text("该用户名不符合格式，应由6-12位字母、数字、下划线组成");
+					return false;
+				}
+			}
+			function pf(){
+				if(p_z.test($("#exampleInputPassword1").val()) || $("#exampleInputPassword1").val()=="admin"){
+					$("#passwordSpan").css("color","green");
+					$("#passwordSpan").text("密码格式正确！");
+					return true;
+				}else{
+					$("#passwordSpan").css("color","red");
+					$("#passwordSpan").text("该密码不符合格式，应由8-18位字母、数字、下划线组成");
+					return false;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
